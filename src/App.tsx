@@ -91,6 +91,8 @@ const App = () => {
                 
             </ul>
 
+            <h1>If something is too difficult, dont panic! We can always talk about a solution at the interview</h1>
+
             <p>Here is an example of how question could look, background provided in (images/question_background.png):</p>
             <img src={exampleImage} alt='example-img' />
         </div>
