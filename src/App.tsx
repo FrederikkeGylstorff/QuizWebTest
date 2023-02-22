@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { QuizGameContext } from './NoNeedToTouch/QuizGameContext';
 import './App.css';
 import { QuizGame } from './model/QuizGame';
+import exampleImage from './images/question_example.png';
 
 
 const randomName = (prefix: string) => `${prefix} ${Math.round(Math.random()*1000000)}`;
@@ -66,6 +67,17 @@ const App = () => {
                     {error && `${error.status} ${error.message}`}
                 </h2>
             </div>
+            <h1>Your goal is:</h1>
+            <p>To make an editor for a simple quizgame, the user should be able to:</p>
+            <ul>
+                <li>Create new quizes</li>
+                <li>Edit quizzes</li>
+                <li>Remove quizzes</li>
+                <li>Preview how their questions will look in the game when it is played later.</li>
+            </ul>
+            
+            <p>Here is an example of how question could look, background provided in (images/question_background.png):</p>
+            <img src={exampleImage} alt='example-img' />
         </div>
     );
 }
