@@ -1,26 +1,73 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { QuizGameContext } from './NoNeedToTouch/QuizGameContext';
 import './App.css';
+import { QuizGame } from './model/QuizGame';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const randomName = (prefix: string) => `${prefix} ${Math.round(Math.random()*1000000)}`;
+
+const randomGame = () => ({
+    name: randomName("Game"), 
+    description: "This is a quiz game about star-wars!"
+})
+
+const randomQuiz = () => ({
+    question: {text: {content: randomName("Question"), fontSize: 14, textColor: "#000"}},
+    answers: [
+        {text: {content: "Yes", fontSize: 14, textColor: "#FFF"}, correct: true},
+        {text: {content: "No", fontSize: 14, textColor: "#FFF"}, correct: false}
+    ]
+})
+
+const App = () => {
+    const [getAll, loadingGetAll, errorGetAll] = QuizGameContext.useAllGames();
+    const [get, loadingGet, errorGet]          = QuizGameContext.useGame();
+    const [remove, loadingremove, errorRemove] = QuizGameContext.useDeleteGame();
+    const [create, loadingCreate, errorCreate] = QuizGameContext.useCreateGame();
+    const [update, loadingUpdate, errorUpdate] = QuizGameContext.useUpdateGame();
+    const [createQuiz, loadingCreateQuiz, errorCreateQuiz] = QuizGameContext.useCreateQuiz();
+    const [removeQuiz, loadingRemoveQuiz, errorRemoveQuiz] = QuizGameContext.useRemoveQuiz();
+
+    const loading = loadingGetAll || loadingGet || loadingremove || loadingCreate || loadingUpdate || loadingCreateQuiz || loadingRemoveQuiz;
+    const error = errorGetAll || errorGet || errorRemove || errorCreate || errorUpdate || errorCreateQuiz || errorRemoveQuiz;
+
+    const [games, setGames] = useState<QuizGame[]>([]);
+
+    return (
+        <div className="App">
+            <button onClick={() => create(randomGame()).then(x => setGames(g => [...g, x]))}>
+                Create game
+            </button>
+            <button onClick={() => get("8beabb14-417b-404a-acb9-699867233378").then(x => setGames(g => [...g, x]))}>
+                Fetch game
+            </button>
+            <button onClick={() => getAll().then(setGames)}>Fetch All games</button>
+
+            <div>
+                <h1>Games</h1>
+                {games.map(x => 
+                    <div key={x.id}>
+                        Name: "{x.name}", no of q: {x.quizzes?.length ?? 0}
+                        <button onClick={() => remove(x.id).then(() => setGames(g => g.filter(y => y.id !== x.id)))}>Delete game</button>
+                        <button onClick={() => update(x.id, {...x, name: randomName("Game")}).then((updatedGame) => setGames(g => g.map(y => y.id !== updatedGame.id ? y : updatedGame)))}>update game name</button>
+                        <button onClick={() => createQuiz(x.id, randomQuiz()).then((updatedGame) => setGames(g => g.map(y => y.id !== updatedGame.id ? y : updatedGame)))}>add quiz</button>
+                        {x.quizzes.length > 0 && 
+                            <button 
+                                onClick={() => removeQuiz(x.id, x.quizzes[0].id).then((updatedGame) => setGames(g => g.map(y => y.id !== updatedGame.id ? y : updatedGame)))}
+                            >
+                                remove quiz
+                            </button>
+                        }
+                    </div>
+                )}
+                {games.length === 0 && "No games.."}
+                 <h2>
+                    {loading && "Loading..."}
+                    {error && `${error.status} ${error.message}`}
+                </h2>
+            </div>
+        </div>
+    );
 }
 
 export default App;
