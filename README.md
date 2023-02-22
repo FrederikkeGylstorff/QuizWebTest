@@ -1,12 +1,13 @@
 # Getting Started with Web dev test
 
-The objective of the test is to make a simple quiz editor where you can CRUD quizzes for a quiz-game. Data will not be expected to be saved between page reloads.
+The objective of the test is to make a simple quiz editor where you can CRUD quizzes for a quiz-game.
 
 
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.\
