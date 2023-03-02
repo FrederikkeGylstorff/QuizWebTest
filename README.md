@@ -19,7 +19,7 @@ The objective of the test is to make a simple quiz editor where you can CRUD qui
 
  * Clone or fork this repository.
  * Write awesome code.
- * Send a link to your repository via JobIndex message system.
+ * Send a link to your repository via the JobIndex message system.
 
 ## Learn More
 
