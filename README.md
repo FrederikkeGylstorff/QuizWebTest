@@ -2,26 +2,22 @@
 
 The objective of the test is to make a simple quiz editor where you can CRUD quizzes for a quiz-game.
 
+##Prerequisites
+ * Git (https://gitforwindows.org/)
+ * Node(tested with v. 18.14.2 - https://nodejs.org/en/download/)
+ * Text or code editor (https://code.visualstudio.com/)
+ 
+##Getting up and running
+ * Open a command line in the root folder of the project. The folder with package.json file in it
+ * Run the command "npm install"
+ * Run the command "npm start"
+ * Your default browser will open and show test template at (http://localhost:3000)
+
 ## Handing in your test
 
  * Clone or fork this repository.
  * Write awesome code.
  * Send a link to your repository via JobIndex message system.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm install`
-### `npm start`
-
-Runs the app in the development mode.
-
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
-
-You will also see any lint errors in the console.
 
 ## Learn More
 
