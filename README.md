@@ -2,6 +2,11 @@
 
 The objective of the test is to make a simple quiz editor where you can CRUD quizzes for a quiz-game.
 
+## Handing in your test
+
+ * Clone or fork this repository.
+ * Write awesome code
+ * Send a link to your repository via JobIndex message system.
 
 ## Available Scripts
 
