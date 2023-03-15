@@ -1,0 +1,35 @@
+.button {
+    background-color: 
+    #00a79c;
+    height: 30px;
+    border: 2px #05877a;
+    
+    
+}
+.button:hover{
+    background-color: #05877a;
+}
+
+.input{
+    background-color: #eee;
+    border: none;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.buttonCreate{
+    background-color: 
+    #00a79c;
+    border: 2px #05877a;
+    height: 40px;
+    border-radius: 3px;
+}
+.buttonCreate:hover{
+    background-color: #05877a;
+}
+.tabel{
+    width: 40%;
+    margin-left: auto; 
+    margin-right: auto;
+}
+

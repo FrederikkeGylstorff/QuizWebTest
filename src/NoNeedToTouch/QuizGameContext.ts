@@ -48,7 +48,6 @@ export const QuizGameContext: IQuizGameContext = {
         const invoke = useCallback((model: CreateGameDto) => rawInvoke(baseRoute, model), [rawInvoke]);
         return [invoke, loading, error];
     },
-
     useCreateQuiz: function (): ContextReturn<QuizGame, string, CreateQuizDto> {
         const [rawInvoke, loading, error] = useFetchPost<QuizGame>();
         const invoke = useCallback((gameId: string, model: CreateQuizDto) => rawInvoke(`${baseRoute}/${gameId}/quiz`, model), [rawInvoke]);
